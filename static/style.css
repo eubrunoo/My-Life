@@ -1,0 +1,362 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-dark: #121212;
+  --text-light: #ffffff;
+  --highlight-red: #ff3333;
+  --task-bg: #2a2a2a;
+  --task-border: #444444;
+  --icon-gray: #777777;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: var(--font-family);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100px;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-right: 1px solid #2a2a2a;
+}
+
+#ml-button {
+  background-color: transparent;
+  color: var(--highlight-red);
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#add-button {
+  background-color: var(--highlight-red);
+  color: var(--text-light);
+  border: none;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 2em;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s;
+}
+
+#add-button:hover {
+  background-color: #e62e2e;
+}
+
+#main-content {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+#logo-text {
+  font-size: 3.5em;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.highlight {
+  color: var(--highlight-red);
+}
+
+#tagline {
+  font-size: 1.1em;
+  color: #aaaaaa;
+  margin-bottom: 50px;
+}
+
+#task-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.task-item {
+  background-color: var(--task-bg);
+  border-radius: 8px;
+  text-align: left;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.task-item .task-label {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  height: 100%;
+  padding: 10px 15px;
+
+  box-sizing: border-box;
+}
+
+.task-item .task-label span {
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.task-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--icon-gray);
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.task-item input[type="checkbox"]:checked {
+  border-color: var(--highlight-red);
+  background-color: var(--highlight-red);
+}
+
+.task-item input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: var(--text-light);
+  font-size: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
+
+.task-item.completed span {
+  text-decoration: line-through;
+  color: var(--icon-gray);
+}
+
+#add-task-tip {
+  color: #aaaaaa;
+  font-size: 0.9em;
+}
+
+.highlight-plus {
+  color: var(--highlight-red);
+  font-weight: bold;
+}
+
+#task-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  display: none;
+}
+
+.modal-content {
+  background-color: var(--task-bg);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+#task-description {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid var(--task-border);
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: var(--text-light);
+}
+
+.modal-content button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#new-task-form button[type="submit"] {
+  background-color: var(--highlight-red);
+  color: var(--text-light);
+}
+
+#modal-cancel {
+  background-color: var(--icon-gray);
+  color: var(--text-light);
+}
+
+#user-info {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.9em;
+}
+
+#username-display {
+  color: #aaaaaa;
+  font-weight: 500;
+}
+
+#logout-button {
+  color: var(--highlight-red);
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid var(--highlight-red);
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+#logout-button:hover {
+  background-color: var(--highlight-red);
+  color: var(--text-light);
+}
+
+.auth-page {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#auth-content {
+  max-width: 380px;
+  width: 90%;
+
+  background-color: var(--task-bg);
+  border-radius: 12px;
+  padding: 40px 30px;
+
+  text-align: center;
+
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+#auth-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 5px;
+}
+
+#auth-content h2 {
+  font-size: 1.2em;
+  color: #aaaaaa;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+#auth-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#auth-content input[type="email"],
+#auth-content input[type="password"],
+#auth-content input[type="text"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--task-border);
+  border-radius: 6px;
+  font-size: 1em;
+  background-color: #1e1e1e;
+  color: var(--text-light);
+  transition: border-color 0.2s;
+}
+
+#auth-content input:focus {
+  border-color: var(--highlight-red);
+  outline: none;
+}
+
+#auth-content input::placeholder {
+  color: #888888;
+}
+
+#auth-content button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: var(--highlight-red);
+  color: var(--text-light);
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#auth-content button[type="submit"]:hover {
+  background-color: #e62e2e;
+}
+
+#auth-content p {
+  margin-top: 25px;
+  font-size: 0.9em;
+  color: #aaaaaa;
+}
+
+#auth-content p a {
+  color: var(--highlight-red);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#auth-content p a:hover {
+  text-decoration: underline;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding-right: 15px;
+  margin-right: 15px;
+  outline: none;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  color: #ff0000;
+}
+
+.task-description {
+  flex-grow: 1;
+  margin: 0 15px;
+}
