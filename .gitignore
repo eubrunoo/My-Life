@@ -1,0 +1,12 @@
+.venv
+.env
+instance/
+
+__pycache__
+*.pyc
+venv/
+/migrations/
+pip-log.txt
+.DS_Store
+
+*.db
