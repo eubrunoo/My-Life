@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='/static/style.css') }}"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" href="/mylife-favcon.ico" type="image/x-icon" />
+
+    <title>My Life - Home</title>
+  </head>
+  <body>
+    <header id="user-info">
+      {% if user.is_authenticated %}
+      <span id="username-display">
+        Hello, {% set name_parts = user.name.split() %} {{ name_parts[0] }} {{
+        name_parts[-1] }}
+      </span>
+
+      <a href="{{ url_for('logout') }}" id="logout-button">Logout</a>
+      {% else %}
+      <a href="{{ url_for('login') }}" id="logout-button">Sign In</a>
+      {% endif %}
+    </header>
+    <aside id="sidebar">
+      <div id="ml-button" class="btn-modal">ML</div>
+      <button id="add-button" title="Add a new task">+</button>
+    </aside>
+
+    <main id="main-content">
+      <section id="header-content">
+        <h1 id="logo-text">My <span class="highlight">Life</span></h1>
+        <p id="tagline">Organize your life, one task at a time</p>
+      </section>
+
+      <section id="task-list"></section>
+
+      <p id="add-task-tip">
+        Click the <span class="highlight-plus">+</span> button to add a new task
+      </p>
+    </main>
+
+    <div id="task-modal" class="modal-hidden">
+      <div class="modal-content">
+        <h2>Adicionar Nova Tarefa</h2>
+        <form id="new-task-form">
+          <input
+            type="text"
+            id="task-description"
+            placeholder="Descreva sua nova tarefa..."
+            required
+          />
+          <button type="submit" id="modal-add" class="btn-modal">
+            Adicionar
+          </button>
+          <button type="button" id="modal-cancel" class="btn-modal">
+            Cancelar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <footer></footer>
+    <script src="{{ url_for('static', filename='/static/script.js') }}"></script>
+    <script src="/static/script.js"></script>
+  </body>
+</html>
