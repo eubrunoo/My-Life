@@ -21,7 +21,7 @@ The application follows a modern, dark-themed UI and is built using Python's Fla
 | **ORM/Migrations**| Flask-SQLAlchemy, Flask-Migrate |
 | **Security** | Flask-Login, Werkzeug (Password Hashing) |
 | **Frontend** | HTML5, CSS3, Vanilla JavaScript (DOM Manipulation/Fetch API) |
-| **Deployment** | Railway / Render (PaaS) |
+| **Deployment** | Railway |
 
 ## ⚙️ Installation and Setup (Development)
 
@@ -36,7 +36,7 @@ Follow these steps to get a local copy of the project running:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [SEU_LINK_DO_REPOSITORIO]
+    git clone [https://github.com/eubrunoo/mytodo-personal-website](https://github.com/eubrunoo/mytodo-personal-website)
     cd my-life
     ```
 
