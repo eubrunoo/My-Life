@@ -11,6 +11,10 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'sqlite:///tasks.db'
 db = SQLAlchemy(app)
 
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    "pool_pre_ping": True,
+}
+
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
 login_manager = LoginManager()

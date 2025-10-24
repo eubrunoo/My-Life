@@ -34,11 +34,11 @@ Follow these steps to get a local copy of the project running:
 
 ### Steps
 
-1.  **Clone the Repository:**
-    ```bash
-    git clone [https://github.com/eubrunoo/mytodo-personal-website](https://github.com/eubrunoo/mytodo-personal-website)
-    cd my-life
-    ```
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/eubrunoo/My-Life
+   cd My-Life
+
 
 2.  **Create and Activate Virtual Environment:**
     ```bash
@@ -56,7 +56,7 @@ Follow these steps to get a local copy of the project running:
     * Create a file named **`.env`** in the project root.
     * Add your secret key (used by Flask-Login):
         ```
-        SECRET_KEY="SUA_CHAVE_SECRETA_ALEATORIA_AQUI"
+        SECRET_KEY="A_LONG_RANDOM_STRING_GENERATED_BY_YOU"
         ```
 
 5.  **Initialize and Migrate Database (SQLite):**
